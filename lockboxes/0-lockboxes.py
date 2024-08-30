@@ -16,6 +16,8 @@ def canUnlockAll(boxes):
         else:
             if i in keys:
                 keys.remove(i)
+    if len(boxes) > 10:
+        print(keys)
     if len(keys) == num_of_boxes_to_unlock:
         return (True)
     else:
