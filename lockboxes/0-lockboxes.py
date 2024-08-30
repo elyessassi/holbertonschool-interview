@@ -4,7 +4,8 @@
 
 def canUnlockAll(boxes):
     """ code """
-
+    if len(boxes) == 1:
+        return (True)
     num_of_boxes_to_unlock = len(boxes) - 1
     keys = boxes[0].copy()
     for i in keys:
