@@ -9,9 +9,10 @@ def canUnlockAll(boxes):
     num_of_boxes_to_unlock = len(boxes) - 1
     keys = boxes[0].copy()
     for i in keys:
-        for j in boxes[i]:
-            if j not in keys and j != 0:
-                keys.append(j)
+        if i <= len(boxes) - 1:
+            for j in boxes[i]:
+                if j not in keys and j != 0:
+                    keys.append(j)
     if len(keys) == num_of_boxes_to_unlock:
         return (True)
     else:
