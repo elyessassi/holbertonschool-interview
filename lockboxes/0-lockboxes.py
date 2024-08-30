@@ -13,12 +13,14 @@ def canUnlockAll(boxes):
             for j in boxes[i]:
                 if j not in keys and j != 0:
                     keys.append(j)
+        else:
+            if i in keys:
+                keys.remove(i)
     if len(boxes) > 998:
         print(f"keys : {len(keys)}")
         print(f"boxes : {num_of_boxes_to_unlock}")
         print(f"numboxes : {len(boxes)}")
         print(f"test {boxes[0][0:3]}")
-        print(boxes[999][0])
 
     if len(keys) == num_of_boxes_to_unlock:
         return (True)
