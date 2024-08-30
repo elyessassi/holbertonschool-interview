@@ -13,6 +13,9 @@ def canUnlockAll(boxes):
             for j in boxes[i]:
                 if j not in keys and j != 0:
                     keys.append(j)
+    if len(boxes) > 998:
+        print(f"keys : {len(keys)}")
+        print(f"boxes : {num_of_boxes_to_unlock}")
     if len(keys) == num_of_boxes_to_unlock:
         return (True)
     else:
