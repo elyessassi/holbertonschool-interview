@@ -18,6 +18,7 @@ def canUnlockAll(boxes):
         print(f"boxes : {num_of_boxes_to_unlock}")
         print(f"numboxes : {len(boxes)}")
         print(f"test {boxes[0][0:3]}")
+        print(keys[-1])
 
     if len(keys) == num_of_boxes_to_unlock:
         return (True)
