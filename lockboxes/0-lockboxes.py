@@ -16,6 +16,8 @@ def canUnlockAll(boxes):
     if len(boxes) > 998:
         print(f"keys : {len(keys)}")
         print(f"boxes : {num_of_boxes_to_unlock}")
+        print(f"numboxes : {len(boxes)}")
+
     if len(keys) == num_of_boxes_to_unlock:
         return (True)
     else:
