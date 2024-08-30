@@ -7,7 +7,7 @@ def canUnlockAll(boxes):
     if len(boxes) == 1:
         return (True)
     num_of_boxes_to_unlock = len(boxes) - 1
-    keys = boxes[0].copy()
+    keys = list(dict.fromkeys(boxes[0]))
     for i in keys:
         if i <= len(boxes) - 1:
             for j in boxes[i]:
@@ -16,6 +16,10 @@ def canUnlockAll(boxes):
         else:
             if i in keys:
                 keys.remove(i)
+    print(f"keys: {len(keys)}")
+    print(f"boxes {num_of_boxes_to_unlock}")
+    print(len(boxes))
+    print(keys)
     if len(keys) == num_of_boxes_to_unlock:
         return (True)
     else:
