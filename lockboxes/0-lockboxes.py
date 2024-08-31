@@ -18,7 +18,7 @@ def canUnlockAll(boxes):
             if i in keys:
                 keys[index] = None
         index = index + 1
-    keys = [k for k in keys if k != None]
+    keys = [k for k in keys if k is not None]
     if len(keys) == num_of_boxes_to_unlock:
         return (True)
     else:
