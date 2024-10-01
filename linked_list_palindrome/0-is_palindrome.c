@@ -11,7 +11,7 @@
 
 int is_palindrome(listint_t **head)
 {
-	int array[10];
+	int array[1000];
 	listint_t *temp = *head;
 	int iterator = 0;
 	/* the loop will start iteration from the middle using this variable*/
