@@ -25,7 +25,6 @@ int is_palindrome(listint_t **head)
 	while (temp != NULL)
 	{
 		array[iterator] = temp->n;
-		printf("%i  ", temp->n);
 		temp = temp->next;
 		iterator++;
 	}
