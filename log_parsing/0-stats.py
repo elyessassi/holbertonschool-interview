@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" log parsing algorithm"""
+""" log parsing algorithm """
 from sys import stdin
 import re
 
