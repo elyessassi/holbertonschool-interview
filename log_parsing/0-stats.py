@@ -1,5 +1,10 @@
 #!/usr/bin/python3
-""" log parsing algorithm """
+
+""" log parsing algorithm that takes logs from an other file 
+    and shows the file size and the number of appearence of each
+    type of error
+"""
+
 from sys import stdin
 import re
 
