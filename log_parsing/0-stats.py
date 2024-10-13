@@ -36,10 +36,11 @@ def main():
                     files_size = 0
                     num_lines = 0
                     error_dict = {"200":0, "301":0, "400":0, "401":0, "403":0, "404":0, "405":0, "500":0}
-        print(f"File size: {files_size}")
-        for i in error_dict:
-            if error_dict[i] != 0:
-                print(f"{i}: {error_dict[i]}")
+        if files_size != 0:
+            print(f"File size: {files_size}")
+            for i in error_dict:
+                if error_dict[i] != 0:
+                    print(f"{i}: {error_dict[i]}")
     except KeyboardInterrupt: 
         print(f"File size: {files_size}")
         for i in error_dict:
