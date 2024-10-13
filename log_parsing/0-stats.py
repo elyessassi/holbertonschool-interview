@@ -16,11 +16,13 @@ def main():
     error_dict = {"200":0, "301":0, "400":0, "401":0, "403":0, "404":0, "405":0, "500":0}
     num_lines = 0
     files_size = 0
+    c = 0
     file_size_regex = '\d{1,4}$'
     error_regex = '(?<=\d"\s)\d{3}'
     regex = '\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\s-\s\[\d{4}-\d{1,2}-\d{1,2}\s\d{1,2}:\d{1,2}:\d{1,2}\.\d{6}\]\s"\w{3}\s\/projects\/260\sHTTP\/1.1"\s\d{3}\s\d{1,4}'
     try:
         for line in stdin:
+            c = c + 1
             if re.findall(regex, line) == []:
                 continue
             else:
@@ -41,6 +43,8 @@ def main():
             for i in error_dict:
                 if error_dict[i] != 0:
                     print(f"{i}: {error_dict[i]}")
+        if c > 3:
+            print(f"{c} here here here")
     except KeyboardInterrupt: 
         print(f"File size: {files_size}")
         for i in error_dict:
