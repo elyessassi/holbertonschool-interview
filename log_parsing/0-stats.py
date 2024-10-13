@@ -26,6 +26,7 @@ def main():
     try:
         for i in range(len(lines)):
             if re.findall(regex, lines[i]) == []:
+                print(f"this is the data {data}  end of data")
                 continue
             else:
                 num_lines += 1
