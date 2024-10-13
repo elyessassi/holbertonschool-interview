@@ -28,14 +28,18 @@ def main():
                 files_size += int((re.findall(file_size_regex, line))[0])
                 error = (re.search(error_regex, line))[0]
                 error_dict[error] += 1
-                #the if is here
-                print(f"File size: {files_size}")
-                for i in error_dict:
-                    if error_dict[i] != 0:
-                        print(f"{i}: {error_dict[i]}")
-                files_size = 0
-                num_lines = 0
-                error_dict = {"200":0, "301":0, "400":0, "401":0, "403":0, "404":0, "405":0, "500":0}
+                if num_lines == 10:
+                    print(f"File size: {files_size}")
+                    for i in error_dict:
+                        if error_dict[i] != 0:
+                            print(f"{i}: {error_dict[i]}")
+                    files_size = 0
+                    num_lines = 0
+                    error_dict = {"200":0, "301":0, "400":0, "401":0, "403":0, "404":0, "405":0, "500":0}
+        print(f"File size: {files_size}")
+        for i in error_dict:
+            if error_dict[i] != 0:
+                print(f"{i}: {error_dict[i]}")
     except KeyboardInterrupt: 
         print(f"File size: {files_size}")
         for i in error_dict:
