@@ -26,10 +26,9 @@ def main():
     try:
         for i in range(len(lines)):
             if re.findall(regex, lines[i]) == []:
-                print("heeeeeeeeeeeeeeehaaaaaaaaaaa",i)
+                print("++++++++++++++++++++++",data,"++++++++++++++++++++++")
                 continue
             else:
-                print("worked", i)
                 num_lines += 1
                 files_size += int((re.findall(file_size_regex, lines[i]))[0])
                 error = (re.search(error_regex, lines[i]))[0]
