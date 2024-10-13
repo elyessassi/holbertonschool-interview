@@ -29,6 +29,7 @@ def main():
                 print("heeeeeeeeeeeeeeehaaaaaaaaaaa",i)
                 continue
             else:
+                print("worked", i)
                 num_lines += 1
                 files_size += int((re.findall(file_size_regex, lines[i]))[0])
                 error = (re.search(error_regex, lines[i]))[0]
