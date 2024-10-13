@@ -18,7 +18,7 @@ def main():
     files_size = 0
     file_size_regex = '\d{1,4}$'
     error_regex = '(?<=\d"\s)\d{3}'
-    regex = '\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\s-\s\[\d{4}-\d{1,2}-\d{1,2}\s\d{1,2}:\d{1,2}:\d{1,2}\.\d{6}\]\s"\w{3}\s\/projects\/260\sHTTP\/1.1"\s\d{3}\s\d{1,4}'
+    regex = '.*\s?-\s?\[\d{4}-\d{1,2}-\d{1,2}\s\d{1,2}:\d{1,2}:\d{1,2}\.\d{6}\]\s"\w{3}\s\/projects\/260\sHTTP\/1.1"\s\d{3}\s\d{1,4}'
     data = stdin.read()
     if data == "":
         print(f"File size: {files_size}")
