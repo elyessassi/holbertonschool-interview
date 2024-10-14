@@ -4,8 +4,7 @@
 
 int check_cycle(listint_t *list) {
     listint_t *temp = list, *adresses[100];
-    int index = 0;
-    long unsigned int for_index;
+    int index = 0, for_index;
 
     if (list == NULL){
         return (0);
@@ -15,7 +14,7 @@ int check_cycle(listint_t *list) {
         adresses[index] = temp;
         temp = temp->next;
 
-        for (for_index = 0; for_index < (sizeof(adresses)/sizeof(adresses[0])); for_index++){
+        for (for_index = 0; for_index < (index + 1); for_index++){
             if (adresses[for_index] == temp) {
                 return (1);
             }
