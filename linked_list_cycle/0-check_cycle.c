@@ -3,7 +3,7 @@
 #include "lists.h"
 
 int check_cycle(listint_t *list) {
-    listint_t *temp = list, *adresses[500];
+    listint_t *temp = list, *adresses[750];
     int index = 0, for_index;
 
     if (list == NULL){
