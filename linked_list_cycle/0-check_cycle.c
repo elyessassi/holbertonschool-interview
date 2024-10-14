@@ -14,7 +14,7 @@ int check_cycle(listint_t *list) {
         adresses[index] = temp;
         temp = temp->next;
 
-        for (for_index = 0; for_index < (index + 1); for_index++){
+        for (for_index = 0; for_index < index; for_index++){
             if (adresses[for_index] == temp) {
                 return (1);
             }
