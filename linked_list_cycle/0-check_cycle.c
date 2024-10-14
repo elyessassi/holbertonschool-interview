@@ -4,7 +4,7 @@
 
 int check_cycle(listint_t *list) {
     listint_t *temp = list;
-    listint_t *adresses[10];
+    listint_t *adresses[1000];
     int index = 0;
     long unsigned int for_index;
 
