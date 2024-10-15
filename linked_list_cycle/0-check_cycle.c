@@ -8,7 +8,7 @@ int check_cycle(listint_t *list) {
     if (list == NULL){
         return (0);
     }
-    while (temp->next != NULL)
+    while (temp->next != NULL && index < 1000)
     {
         for (for_index = 0; for_index < index; for_index++){
             if (adresses[for_index] == temp) {
