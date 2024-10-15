@@ -10,14 +10,13 @@ int check_cycle(listint_t *list) {
     }
     while (temp->next != NULL)
     {
-        adresses[index] = temp;
-        temp = temp->next;
-
         for (for_index = 0; for_index < index; for_index++){
             if (adresses[for_index] == temp) {
                 return (1);
             }
         }
+        adresses[index] = temp;
+        temp = temp->next;
         for_index = 0;
         index++;
     } 
