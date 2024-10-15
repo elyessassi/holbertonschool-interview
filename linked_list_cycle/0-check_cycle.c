@@ -2,23 +2,17 @@
 #include "lists.h"
 
 int check_cycle(listint_t *list) {
-    listint_t *temp = list, *adresses[1000];
-    int index = 0, for_index;
+    listint_t *steps2 = list, *steps1 = list; 
 
     if (list == NULL){
         return (0);
     }
-    while (temp->next != NULL && index < 1000)
-    {
-        for (for_index = 0; for_index < index; for_index++){
-            if (adresses[for_index] == temp) {
-                return (1);
-            }
+    while (steps2 != NULL && steps2->next != NULL) {
+        steps2 = steps2->next->next;
+        steps1 = steps1->next;
+        if (steps1 == steps2){
+            return (1);
         }
-        adresses[index] = temp;
-        temp = temp->next;
-        for_index = 0;
-        index++;
-    } 
+    }
     return (0);
 }
