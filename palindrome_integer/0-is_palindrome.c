@@ -18,7 +18,7 @@ int is_palindrome(unsigned long n)
 	length = calc_length(n);
 	while ((i < length - 1))
 	{
-		if ((str[i] - 46) != (str[length - 1] - 46))
+		if ((str[i] - 48) != (str[length - 1] - 48))
 		{
 			return (0);
 		}
@@ -36,9 +36,9 @@ int is_palindrome(unsigned long n)
 
 int calc_length(unsigned long n)
 {
-	int l = 0;
+	int l = 1;
 
-	while (n % 10 != 0)
+	while (n / 10 != 0)
 	{
 		n = n / 10;
 		l = l + 1;
