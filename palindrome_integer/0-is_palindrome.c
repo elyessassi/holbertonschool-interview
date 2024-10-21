@@ -10,37 +10,20 @@
 
 int is_palindrome(unsigned long n)
 {
-	int length, i = 0;
-	char str[100];
+	unsigned long r = 0, n_copy;
 
-	sprintf(str, "%lu", n);
-	length = calc_length(n);
-	while ((i < length - 1))
+	n_copy = n;
+	while (n_copy != 0)
 	{
-		if ((str[i] - 48) != (str[length - 1] - 48))
-		{
-			return (0);
-		}
-		length = length - 1;
-		i++;
+		r = r * 10 + (n_copy % 10);
+		n_copy = n_copy / 10;
 	}
-	return (1);
+	printf("R : %ld\n", r);
+	printf("N : %ld\n", n);
+
+	if (r == n)
+		return (1);
+	else
+		return (0);
 }
 
-/**
- * calc_length - function that calculates the length of an int
- * @n: the integer to calculate its length
- * Return: length
- */
-
-int calc_length(unsigned long n)
-{
-	int l = 1;
-
-	while (n / 10 != 0)
-	{
-		n = n / 10;
-		l = l + 1;
-	}
-	return (l);
-}
