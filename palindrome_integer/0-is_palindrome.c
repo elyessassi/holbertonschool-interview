@@ -18,8 +18,6 @@ int is_palindrome(unsigned long n)
 	length = calc_length(n);
 	while ((i < length - 1))
 	{
-		printf("here1 %d\n", i);
-		printf("here2 %d\n", str[i]);
 		if ((str[i] - 46) != (str[length - 1] - 46))
 		{
 			return (0);
