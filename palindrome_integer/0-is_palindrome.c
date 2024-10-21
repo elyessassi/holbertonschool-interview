@@ -18,8 +18,6 @@ int is_palindrome(unsigned long n)
 		r = r * 10 + (n_copy % 10);
 		n_copy = n_copy / 10;
 	}
-	printf("R : %ld\n", r);
-	printf("N : %ld\n", n);
 
 	if (r == n)
 		return (1);
