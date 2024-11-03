@@ -10,7 +10,6 @@ def validUTF8(data):
     k = 0
     following_bytes = 0
     while i <= (len(data) - 1):
-        print(f"working on {i}")
         data[i] = data[i] & 0xFF
         if data[i] >> 5 == int("110", 2):
             following_bytes = 1
