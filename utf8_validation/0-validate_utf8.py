@@ -10,6 +10,7 @@ def validUTF8(data):
     k = 0
     following_bytes = 0
     while i <= (len(data) - 1):
+        print(f"now working on: {i}")
         data[i] = data[i] & 0xFF
         if data[i] >> 5 == int("110", 2):
             following_bytes = 1
@@ -17,6 +18,8 @@ def validUTF8(data):
             following_bytes = 2
         elif data[i] >> 3 == int("11110", 2):
             following_bytes = 3
+        elif data[i] >> 2 == int("111110", 2):
+            return False
         if following_bytes > 0:
             while True:
                 k = i + j
