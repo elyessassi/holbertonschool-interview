@@ -10,10 +10,6 @@ def validUTF8(data):
     k = 0
     following_bytes = 0
     while i <= (len(data) - 1):
-        #only for testing
-        if len(data) > 50:
-            print(data)
-        #end
         data[i] = data[i] & 0xFF
         if data[i] >= 250:
             return False
@@ -25,13 +21,14 @@ def validUTF8(data):
             following_bytes = 3
         if following_bytes > 0:
             while True:
-                k = i + j
+                k = i + 1
                 if k > len(data) - 1:
                     return False
                 elif data[k] >> 6 != int("10", 2):
                     return False
                 i = i + 1
-                if k == following_bytes:
+                j = j + 1
+                if j >= following_bytes:
                     i = i + 1
                     following_bytes = 0
                     break
