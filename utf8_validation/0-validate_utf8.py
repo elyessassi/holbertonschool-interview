@@ -11,7 +11,7 @@ def validUTF8(data):
     following_bytes = 0
     while i <= (len(data) - 1):
         data[i] = data[i] & 0xFF
-        if data >= 250:
+        if data[i] >= 250:
             return False
         if data[i] >> 5 == int("110", 2):
             following_bytes = 1
