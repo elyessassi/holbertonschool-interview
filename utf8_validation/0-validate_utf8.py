@@ -6,8 +6,6 @@ data set represents a valid UTF-8 encoding """
 def validUTF8(data):
     """ The function that does the task"""
     i = 0
-    j = 1
-    k = 0
     following_bytes = 0
     while i <= (len(data) - 1):
         data[i] = data[i] & 0xFF
@@ -20,18 +18,11 @@ def validUTF8(data):
         elif data[i] >> 3 == int("11110", 2):
             following_bytes = 3
         if following_bytes > 0:
-            while True:
-                k = i + 1
-                if k > len(data) - 1:
+            for j in range(following_bytes):
+                if (j + i + 1) > len(data) - 1:
                     return False
-                elif data[k] >> 6 != int("10", 2):
+                elif data[j + i + 1] >> 6 != int("10", 2):
                     return False
-                i = i + 1
-                j = j + 1
-                if j >= following_bytes:
-                    i = i + 1
-                    following_bytes = 0
-                    break
-        else:
-            i = i + 1
+        i = i + following_bytes
+        following_bytes = 0
     return True
