@@ -11,26 +11,30 @@ def rain(walls):
     space: space between w1 and w2
     Return Value: RainwWater
     """
-    w1 = 0
-    w2 = 0
     RainWater = 0
-    space = 0
     if (len(walls) == 0):
         return 0
-    for i in walls:
-        if (i != 0) and (w1 == 0):
+    w1 = -2
+    w2 = 0
+    for i in range(len(walls)):
+        print(f"entering :: i = {i}  w1 = {w1}  w2 =  {w2}")
+        if (walls[i] > 0) and (w1 == -2):
             w1 = i
+            print(f"exiting case 1 ::: i = {i}  w1 = {w1}  w2 =  {w2}")
             continue
-        if (i == 0) and (w1 != 0):
-            space = space + 1
+        if (walls[w1] > 0) and (walls[w1 + 1] >= walls[w1]) and (w1 < len(walls) - 2):
+            w1 = w1 + 1
+            print(f"exiting case 2 ::: i = {i}  w1 = {w1}  w2 =  {w2}")
             continue
-        if (i != 0) and (w1 != 0):
+        if (walls[w1] > 0) and (walls[i] > walls[w1 + 1]):
             w2 = i
-            if w1 >= w2:
-                RainWater = RainWater + (space * w2)
-            else:
-                RainWater = RainWater + (space * w1)
+            
+            for j in range(w1 + 1, w2):
+                if (walls[w1] >= walls[w2]):
+                    RainWater = RainWater + (walls[w2] - walls[j])
+                else:
+                    RainWater = RainWater + (walls[w1] - walls[j])
             w1 = w2
-            w2 = 0
-            space = 0
+            print(f"exiting  case 3 ::: i = {i}  w1 = {w1}  w2 =  {w2}    RW = {RainWater}")
+        
     return RainWater
