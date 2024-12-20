@@ -5,21 +5,22 @@
 
 def rain(walls):
     """ Rain function
-    w1 : the wall to the left
-    w2 : the wall to the right
+    w1 : index of the wall to the left
+    w2 : index of the wall to the right
     RainWater: the total of rain water collected
-    space: space between w1 and w2
     Return Value: RainwWater
     """
     RainWater = 0
     if (len(walls) == 0):
         return 0
-    w1 = -2
+    w1 = 0
     w2 = 0
+    started = False
     for i in range(len(walls)):
         print(f"entering :: i = {i}  w1 = {w1}  w2 =  {w2}")
-        if (walls[i] > 0) and (w1 == -2):
+        if (walls[i] > 0) and (started == False):
             w1 = i
+            started = True
             print(f"exiting case 1 ::: i = {i}  w1 = {w1}  w2 =  {w2}")
             continue
         if (walls[w1] > 0) and (walls[w1 + 1] >= walls[w1]) and (w1 < len(walls) - 2):
