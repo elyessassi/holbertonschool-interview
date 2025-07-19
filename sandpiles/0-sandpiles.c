@@ -51,7 +51,7 @@ void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 }
 
 /**
- * print_grid - Print 3x3 grid
+ * my_print_grid - Print 3x3 grid
  * @grid: 3x3 grid
  */
 
