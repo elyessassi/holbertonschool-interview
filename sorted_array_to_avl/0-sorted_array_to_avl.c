@@ -18,6 +18,8 @@ avl_t *insert_bst(avl_t *bst, int value){
 
     if (bst == NULL){
         newnode = malloc(sizeof(avl_t));
+        if (newnode == NULL)
+            return(NULL);
         newnode->n = value;
         newnode->left = NULL;
         newnode->right = NULL;
