@@ -9,7 +9,6 @@ avl_t *sorted_array_to_avl(int *array, size_t size){
     if (bst == NULL) {
         printf("fama mochkla");
     }
-    printf("hello");
     return(bst);
 }
 
