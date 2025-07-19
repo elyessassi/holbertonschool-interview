@@ -9,6 +9,7 @@ avl_t *sorted_array_to_avl(int *array, size_t size){
     if (bst == NULL) {
         printf("fama mochkla");
     }
+    printf("hello");
     return(bst);
 }
 
@@ -64,7 +65,6 @@ void create_tree(int *array, size_t size, avl_t **bst){
 
     size_t middle = (size / 2);
 
-    printf("%d", size);
     if (size <= 1){
         *bst = insert_bst(*bst, *array);
     }
