@@ -45,10 +45,22 @@ skiplist_t *linear_skip(skiplist_t *list, int value)
 	return (NULL);
 }
 
+/**
+ * print_value_checked - prints where the check happens
+ * @idx: the index where we check
+ * @value: the value we check
+ */
+
 void print_value_checked(size_t idx, int value)
 {
 	printf("Value checked at index [%ld] = [%d]\n", idx, value);
 }
+
+/**
+ * print_value_found - prints where the value is found
+ * @idx1: start idx
+ * @idx2: end idx
+ */
 
 void print_value_found(size_t idx1, size_t idx2)
 {
