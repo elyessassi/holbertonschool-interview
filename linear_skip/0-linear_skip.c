@@ -1,9 +1,18 @@
 #include "search.h"
 
+/**
+ * linear_skip - searches for a value in a skiplist
+ * @list: list to search in
+ * @value: value to search for
+ * Return: pointer to the index that has the value
+ */
+
 skiplist_t *linear_skip(skiplist_t *list, int value)
 {
 	skiplist_t *temp, *temp2;
 
+	if (list == NULL)
+		return (NULL);
 	temp = list;
 	if (list->n == value)
 		return (list);
@@ -17,13 +26,7 @@ skiplist_t *linear_skip(skiplist_t *list, int value)
 			print_value_found(temp->index, temp2->index);
 			break;
 		}
-		if (temp->express->n == value)
-		{
-			print_value_checked(temp->express->index, temp->express->n);
-			return (temp->express);
-		}
-
-		if (temp->express->n > value)
+		if (temp->express->n >= value)
 		{
 			print_value_checked(temp->express->index, temp->express->n);
 			print_value_found(temp->index, temp->express->index);
