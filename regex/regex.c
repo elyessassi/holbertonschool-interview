@@ -45,8 +45,5 @@ int regex_match(char const *str, char const *pattern){
         }
             
     }
-    if (*pattern != '*' && *pattern == '\0')
-        return(1);
-    else
-        return(0);
+    return(1);
 }   
