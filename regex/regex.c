@@ -9,6 +9,9 @@ int regex_match(char const *str, char const *pattern){
 
     if (pattern == NULL || str == NULL)
         return(0);
+    
+    if (*pattern == '\0' || *str == '\0')
+        return(0);
 
     if (*pattern == '*')
         return(0);
@@ -38,5 +41,8 @@ int regex_match(char const *str, char const *pattern){
         }
             
     }
-    return(1);
+    if (*pattern != '*' || *pattern == '\0')
+        return(1);
+    else
+        return(0);
 }   
