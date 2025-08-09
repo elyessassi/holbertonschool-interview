@@ -13,7 +13,7 @@ int regex_match(char const *str, char const *pattern){
     if (*pattern == '\0' && *str == '\0')
         return(1);   
 
-    if (*pattern == '\0' || *str == '\0'){
+    if (*pattern == '\0'){
         return(0);
     }
 
