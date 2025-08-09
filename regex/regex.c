@@ -38,7 +38,7 @@ int regex_match(char const *str, char const *pattern){
         }
             
     }
-    if (*pattern == '\0' || *pattern == '*'){
+    if (*pattern == '\0' || *(pattern + 1) == '*'){
         return(1);
     }
     return(0);
