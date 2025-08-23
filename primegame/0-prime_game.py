@@ -25,8 +25,7 @@ def isWinner(x, nums):
 
     p1_score = 0
     p2_score = 0
-    for i in range(10000):
-        print(i)
+    for i in nums:
         nb_prime = prime_num(i)
         if (nb_prime % 2 != 0):
             p1_score = p1_score + 1
