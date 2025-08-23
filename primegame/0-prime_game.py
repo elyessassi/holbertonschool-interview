@@ -6,14 +6,16 @@ def memoization(func):
     """ function to memoize values """
 
     cache = {}
+
     def wrapper(*args):
+        """ wrapper """
+
         if args in cache:
-            return(cache[args])
+            return (cache[args])
         result = func(*args)
         cache[args] = result
         return (result)
     return (wrapper)
-
 
 
 def isWinner(x, nums):
@@ -50,6 +52,7 @@ def prime_num(num):
             cpt = cpt + 1
     return (cpt)
 
+
 @memoization
 def is_prime(n):
     """ returns True if a number is prime and false if not """
@@ -58,5 +61,3 @@ def is_prime(n):
         if ((n % i) == 0):
             return (False)
     return (True)
-
-
