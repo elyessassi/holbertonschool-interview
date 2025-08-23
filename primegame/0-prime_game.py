@@ -4,6 +4,8 @@
 
 def isWinner(x, nums):
     """ returns the winner's name (main function) """
+    if (x < 1):
+        return ("None")
 
     p1_score = 0
     p2_score = 0
