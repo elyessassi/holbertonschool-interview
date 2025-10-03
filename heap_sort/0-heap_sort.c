@@ -41,12 +41,7 @@ void heap_sort(int *array, size_t size)
                     *(array + j) = temp;
                     print_array(array, size);
                     // this is for checking if the new changed child must be heapfied
-                    checkIfChanged = FixChangedElement(maxidx, &array, i);
-                    if (checkIfChanged == 1)
-                    {
-                        print_array(array, size);
-                        checkIfChanged = 0;
-                    }
+                    FixChangedElement(maxidx, &array, i, size);
                 }
             }
         }
@@ -61,7 +56,7 @@ void heap_sort(int *array, size_t size)
     }
 }
 
-int FixChangedElement(int indexOfElem, int **array, int LastIdx)
+int FixChangedElement(int indexOfElem, int **array, int LastIdx, size_t size)
 {
     int MaxChildIdx, temp, isChanged = 0;
 
@@ -84,6 +79,7 @@ int FixChangedElement(int indexOfElem, int **array, int LastIdx)
             temp = *(*(array) + MaxChildIdx);
             *(*(array) + MaxChildIdx) = *(*(array) + indexOfElem);
             *(*(array) + indexOfElem) = temp;
+            print_array(*array, size);
         }
         indexOfElem = MaxChildIdx;
     }
