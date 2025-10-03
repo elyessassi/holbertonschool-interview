@@ -4,7 +4,7 @@
 
 void heap_sort(int *array, size_t size)
 {
-    int temp, i, j, maxidx, checkIfChanged;
+    int temp, i, j, maxidx;
 
     if (size < 2)
         return;
