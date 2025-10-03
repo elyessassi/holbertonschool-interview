@@ -43,15 +43,21 @@ void heap_sort(int *array, size_t size)
                     // this is for checking if the new changed child must be heapfied
                     checkIfChanged = FixChangedElement(maxidx, &array, i);
                     if (checkIfChanged == 1)
+                    {
                         print_array(array, size);
+                        checkIfChanged = 0;
+                    }
                 }
             }
         }
         // substituting the last element with the first element
-        temp = *(array + i);
-        *(array + i) = *array;
-        *array = temp;
-        print_array(array, size);
+        if (*(array + i) != *array)
+        {
+            temp = *(array + i);
+            *(array + i) = *array;
+            *array = temp;
+            print_array(array, size);
+        }
     }
 }
 
