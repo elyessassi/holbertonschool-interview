@@ -20,10 +20,10 @@ void heap_sort(int *array, size_t size)
 	{
 		for (j = i; j >= 0; j--)
 		{
-			// if it has left child
+			/**  if it has left child*/
 			if ((j * 2 + 1) <= i)
 			{
-				// check if it has right child
+				/** check if it has right child */
 				if ((j * 2 + 2) <= i)
 				{
 					if (*(array + (j * 2 + 2)) > *(array + (j * 2 + 1)))
@@ -44,12 +44,12 @@ void heap_sort(int *array, size_t size)
 					*(array + maxidx) = *(array + j);
 					*(array + j) = temp;
 					print_array(array, size);
-					// this is for checking if the new changed child must be heapfied
+					/** this is for checking if the new changed child must be heapfied */
 					FixChangedElement(maxidx, &array, i, size);
 				}
 			}   
 		}
-		// substituting the last element with the first element
+		/** substituting the last element with the first element */
 		if (*(array + i) != *array)
 		{
 			temp = *(array + i);
@@ -61,7 +61,8 @@ void heap_sort(int *array, size_t size)
 }
 
 /**
- * FixChangedElement - function that hepifies changed element to the button so it takes its right spot
+ * FixChangedElement - heapifies changed element to the button so it takes its right spot
+ * @indexOfElem: the index of the element we are heapifying
  * @array: the array we are sorting
  * @LastIdx: the index that we shouldnt pass
  * @size: the size of the array
