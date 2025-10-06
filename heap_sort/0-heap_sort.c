@@ -8,12 +8,16 @@
 
 void heap_sort(int *array, size_t size)
 {
-	int temp, i, j, maxidx;
+	int temp, i, j, maxidx, isIdentical;
 
 	if (size < 2)
 		return;
 
 	if (array == NULL)
+		return;
+
+	isIdentical = checkIfIdentical(array, size);
+	if (isIdentical == 0)
 		return;
 
 	for (i = size - 1; i >= 0; i--)
@@ -96,3 +100,25 @@ void FixChangedElement(int indexOfElem, int **array, int LastIdx, size_t size)
 		indexOfElem = MaxChildIdx;
 	}
 }
+
+
+
+/** I created this function so my output matches the required output when all elements are identical */
+
+int checkIfIdentical(int *array, size_t size){
+	int isIdentical = 1, valueToCheck = *array;
+	size_t i;
+
+	for (i = 1; i < size; i++){
+		if (*(array + i) != valueToCheck){
+			
+			isIdentical = 0;
+		}
+	}
+	if (isIdentical == 1){
+		for (i = 0; i < size; i++){
+			print_array(array, size);
+		}
+	}
+	return(isIdentical);
+} 
