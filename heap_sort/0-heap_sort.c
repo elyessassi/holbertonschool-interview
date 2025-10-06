@@ -17,7 +17,7 @@ void heap_sort(int *array, size_t size)
 		return;
 
 	isIdentical = checkIfIdentical(array, size);
-	if (isIdentical == 0)
+	if (isIdentical == 1)
 		return;
 
 	for (i = size - 1; i >= 0; i--)
