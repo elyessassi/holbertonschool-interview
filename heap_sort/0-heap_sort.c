@@ -116,7 +116,7 @@ int checkIfIdentical(int *array, size_t size){
 		}
 	}
 	if (isIdentical == 1){
-		for (i = 0; i < size; i++){
+		for (i = 0; i < size - 1; i++){
 			print_array(array, size);
 		}
 	}
