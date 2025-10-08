@@ -37,7 +37,7 @@ def filling_list_zero(word_list, index, word_count):
 def turn_list_lower(thelist, index):
 
     if (index >= len(thelist)):
-        return(thelist)
+        return (thelist)
     thelist[index] = thelist[index].lower()
     return turn_list_lower(thelist, index + 1)
 
@@ -45,7 +45,7 @@ def turn_list_lower(thelist, index):
 def get_titles(articlesList, index, titleList):
 
     if (index >= len(articlesList)):
-        return(titleList)
+        return (titleList)
     title = articlesList[index]["data"]["title"].split()
     title = turn_list_lower(title, 0)
     titleList.extend(title)
@@ -55,7 +55,7 @@ def get_titles(articlesList, index, titleList):
 def compare_lists(word_list, word_count, index, title_list):
 
     if (index >= len(word_list)):
-        return(word_count)
+        return (word_count)
     word_count[index] = word_count[index] + title_list.count(word_list[index])
     return compare_lists(word_list, word_count, index + 1, title_list)
 
@@ -63,7 +63,7 @@ def compare_lists(word_list, word_count, index, title_list):
 def turn_to_sorted_dict(word_list, word_count, dictionnary):
 
     if (word_list == []):
-        return(dictionnary)
+        return (dictionnary)
     indexMax = word_count.index(max(word_count))
     dictionnary[word_list[indexMax]] = word_count[indexMax]
     word_list.pop(indexMax)
