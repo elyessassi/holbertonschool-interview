@@ -6,10 +6,10 @@
 
 struct node
 {
-    int n;
-    struct node *left;
-    struct node *right;
-    struct node *parent;
+	int n;
+	struct node *left;
+	struct node *right;
+	struct node *parent;
 };
 typedef struct node node_t;
 
