@@ -25,8 +25,9 @@ typedef struct binary_tree_s heap_t;
 int heap_extract(heap_t **root);
 heap_t *get_last_node(heap_t *root);
 void binary_tree_print(const binary_tree_t *tree);
-void rebuild_heap(heap_t **root);
+void rebuild_heap(heap_t **root, heap_t *last_node, int RootVal);
 int swap (heap_t **node);
+int getHeight(heap_t *root);
 
 
 
