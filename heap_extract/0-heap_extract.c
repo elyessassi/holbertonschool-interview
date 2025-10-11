@@ -7,6 +7,10 @@ int heap_extract(heap_t **root){
 
     root_value = (*root)->n;
 
+    if (*root == NULL){
+        return(0);
+    }
+
     if ((*root)->left == NULL && (*root)->right == NULL) {
         free(*root);
         *root = NULL;
