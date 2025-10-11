@@ -6,7 +6,7 @@ int heap_extract(heap_t **root){
     heap_t *last_node;
 
     
-    if (root == NULL){
+    if (*root == NULL){
         return(0);
     }
     root_value = (*root)->n;
