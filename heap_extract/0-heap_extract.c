@@ -8,6 +8,7 @@ int heap_extract(heap_t **root){
     root_value = (*root)->n;
 
     if ((*root)->left == NULL && (*root)->right == NULL) {
+        free(*root);
         *root = NULL;
         return(root_value);
     }
