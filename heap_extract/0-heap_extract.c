@@ -5,11 +5,11 @@ int heap_extract(heap_t **root){
     int root_value, temp;
     heap_t *last_node;
 
-    root_value = (*root)->n;
-
-    if (*root == NULL){
+    
+    if (root == NULL){
         return(0);
     }
+    root_value = (*root)->n;
 
     if ((*root)->left == NULL && (*root)->right == NULL) {
         free(*root);
