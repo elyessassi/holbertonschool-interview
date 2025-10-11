@@ -8,10 +8,9 @@ int heap_extract(heap_t **root){
     root_value = (*root)->n;
 
     if ((*root)->left == NULL && (*root)->right == NULL) {
-        free(*root);
+        *root = NULL;
         return(root_value);
     }
-
     last_node = get_last_node(*root);
     // swapting the values of last node with the root
     temp = (*root)->n;
