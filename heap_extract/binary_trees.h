@@ -13,10 +13,10 @@
  */
 struct binary_tree_s
 {
-    int n;
-    struct binary_tree_s *parent;
-    struct binary_tree_s *left;
-    struct binary_tree_s *right;
+	int n;
+	struct binary_tree_s *parent;
+	struct binary_tree_s *left;
+	struct binary_tree_s *right;
 };
 
 typedef struct binary_tree_s binary_tree_t;
@@ -26,14 +26,7 @@ int heap_extract(heap_t **root);
 heap_t *get_last_node(heap_t *root);
 void binary_tree_print(const binary_tree_t *tree);
 void rebuild_heap(heap_t **root);
-int swap (heap_t **node);
+int swap(heap_t **node);
 int getHeight(heap_t *root);
 
-
-
-
-
-
-
-
-#endif // HEAP_EXTRACT
+#endif
