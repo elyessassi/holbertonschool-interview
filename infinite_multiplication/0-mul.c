@@ -2,18 +2,19 @@
 
 int main(int argc, char *argv[]){
     int size1, size2;
-    char *num1, *num2, *res_str;
-    int mult;
-    int result = 0;
-    int i, j, mult_cpt = 0;
+    char *num1, *num2;
+    char *result, *start, *end;
+    int i, j, mult_cpt = 1, res_len;
+    int product;
+    char first_digit, second_digit, digit1, digit2;
+    char *temp;
     // mult is 1 then 10 then 100 ...
-
     if (argc != 3){
-        _putchar('E'),
-        _putchar('r'),
-        _putchar('r'),
-        _putchar('o'),
-        _putchar('r'),
+        _putchar('E');
+        _putchar('r');
+        _putchar('r');
+        _putchar('o');
+        _putchar('r');
         exit(98);
     }
     num1 = argv[1];
@@ -21,20 +22,67 @@ int main(int argc, char *argv[]){
 
     size1 = mystrlen(num1);
     size2 = mystrlen(num2);
-    // removing the \0
-
-    for (i = size2 - 1; i >= 0; i--){
-        mult = power(10, mult_cpt);
-        for (j = size1 - 1; j >= 0; j--){
-            result = result + ((*(num1 + j) - '0') * (*(num2 + i) - '0') * mult);
-            mult = mult * 10;
-        }
-        mult_cpt = mult_cpt + 1;
+    // creating array with the size of the product
+    if (((*num1 - '0') * (*num2 - '0')) >= 10)
+    {
+        res_len = (size1 + size2);
+        result = malloc(sizeof(char) * res_len + 1);
     }
-    res_str = turn_to_str(result, num_length(result));
-    print_string(res_str);
 
+    else
+    {
+        res_len = (size1 + size2 - 1);
+        result = malloc(sizeof(char) * res_len + 1);
+    }
 
+    start = result;
+    // going to the last index and replacing result with zeros
+    num2 = num2 + size2 - 1;
+    temp = result;
+    for (i = 0; i < res_len; i++){
+        *temp = '0';
+        temp = temp + 1;
+    }
+    *temp = '\0';
+    //this points to the last digit (right) of result
+    end = result + res_len;
+    // main logic
+    for (i = 0; i < size2; i++){
+        num1 = num1 + size1 - 1;
+        result = end - mult_cpt;
+        for (j = 0; j < size1; j++){
+            product = (*num1 - '0') * (*num2 - '0');
+            if (product > 9){
+                first_digit =  (product % 10) + '0';
+                second_digit =  (product / 10) + '0';
+            }
+            else{
+                first_digit = product + '0';
+                second_digit = '0';
+            }
+            if (((*result - '0') + (first_digit - '0')) >= 10){
+                digit1 = (((*result - '0') + (first_digit - '0')) % 10) + '0';
+                digit2 = (((*result - '0') + (first_digit - '0')) / 10) + '0';
+                *result = digit1;
+                *(result - 1) = (*(result - 1) - '0') + (digit2 - '0') + '0';
+
+            }
+            else
+                *result = (*result - '0') + (first_digit - '0') + '0';
+
+            if (result != start){
+                *(result - 1) = (*(result - 1) - '0') + (second_digit - '0') + '0';
+                result = result - 1;
+            }
+            if (j < size1 - 1)
+                num1 = num1 - 1;
+        }
+
+        num2 = num2 - 1;
+        mult_cpt += 1;
+    }
+    print_string(result);
+    free(result);
 }
 
 int mystrlen(char *mystring){
@@ -47,46 +95,12 @@ int mystrlen(char *mystring){
     return(length);
 }
 
-int power(int n, int x){
-    int i, res = 1;
-
-    if (x == 0)
-        return(1);
-    else if(x > 0){
-        for (i = 0; i < x; i++){
-            res = res * n;
-        }
-    }
-    return(res);
-}
-
-int num_length(int num){
-    int length = 0;
-
-    while (num != 0){
-        length = length + 1;
-        num = num / 10;
-    }
-    return(length);
-}
-
-char *turn_to_str(int num, int size_num){
-    char *temp = malloc(sizeof(char) * (size_num + 1));
-    int i;
-    *(temp + size_num) = '\0';
-    temp = temp + (size_num - 1);
-
-    for(i = 0; i < size_num; i++){
-        *temp = (num % 10) + '0';
-        temp = temp - 1;
-        num = num / 10;
-    }
-    return(temp + 1);
-}
 
 void print_string(char *str){
     while (*str != '\0'){
         _putchar(*str);
         str = str + 1;
     }
+    _putchar('\n');
 }
+
