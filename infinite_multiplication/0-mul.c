@@ -192,5 +192,5 @@ void addTwoDigitNum(char **array, int number)
 	digit1 = (((**array - '0') + (number - '0')) % 10) + '0';
 	digit2 = (((**array - '0') + (number - '0')) / 10) + '0';
 	**array = digit1;
-	*(*(array - 1)) = *(*(array - 1) - '0') + (digit2 - '0') + '0';
+	*(*(array - 1)) = *(*(array - 1)) - '0' + (digit2 - '0') + '0';
 }
