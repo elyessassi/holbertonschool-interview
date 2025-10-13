@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 	char *result, *start, *end, *num1 = argv[1], *num2 = argv[2];
 	int res_len, size1 = mystrlen(num1), size2 = mystrlen(num2);
 
-	if (*num1 == 0 && *num2 == 0){
+	if (*num1 == 0 || *num2 == 0){
 		printf("0");
 		exit(0);
 	}
