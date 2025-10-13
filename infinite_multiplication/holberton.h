@@ -7,11 +7,11 @@
 
 int _putchar(char c);
 int mystrlen(char *mystring);
-int power(int n, int x);
-char *turn_to_str(int num, int size_num);
-int num_length(int num);
 void print_string(char *str);
 int checkIfNum(char chr);
+void exitFunc(void);
+void zerosArray(char **array, int len);
+char *getMul(char *n1, char *n2, int s1, int s2, char *res, char *s, char *e);
 
 
 #endif
