@@ -170,7 +170,8 @@ char *getMul(char *n1, char *n2, int s1, int s2, char *res, char *s, char *e)
 				n1 = n1 - 1;
 			} 
 		}
-		checkIfNum(*n2) == 0 ? exitFunc() : 0;
+		if (checkIfNum(*n2) == 0)
+			exitFunc();
 		n2 = n2 - 1;
 		mult_cpt += 1;
 	}
