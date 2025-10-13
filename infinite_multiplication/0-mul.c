@@ -10,15 +10,17 @@ int main(int argc, char *argv[]){
     char *temp;
     // mult is 1 then 10 then 100 ...
     if (argc != 3){
-        _putchar('E');
-        _putchar('r');
-        _putchar('r');
-        _putchar('o');
-        _putchar('r');
+        printf("ERROR\n");
         exit(98);
     }
     num1 = argv[1];
     num2 = argv[2];
+
+    if (checkIfNum(*num1) == 0 || checkIfNum(*num2) == 0){
+        printf("ERROR\n");
+        exit(98);
+    }
+        
 
     size1 = mystrlen(num1);
     size2 = mystrlen(num2);
@@ -36,8 +38,12 @@ int main(int argc, char *argv[]){
     }
 
     start = result;
-    // going to the last index and replacing result with zeros
     num2 = num2 + size2 - 1;
+    if (checkIfNum(*num2) == 0){
+        printf("ERROR\n");
+        exit(98);
+    }
+    // going to the last index and replacing result with zeros
     temp = result;
     for (i = 0; i < res_len; i++){
         *temp = '0';
@@ -49,6 +55,10 @@ int main(int argc, char *argv[]){
     // main logic
     for (i = 0; i < size2; i++){
         num1 = num1 + size1 - 1;
+        if (checkIfNum(*num1) == 0){
+            printf("ERROR\n");
+            exit(98);
+        }
         result = end - mult_cpt;
         for (j = 0; j < size1; j++){
             product = (*num1 - '0') * (*num2 - '0');
@@ -79,6 +89,10 @@ int main(int argc, char *argv[]){
         }
 
         num2 = num2 - 1;
+        if (checkIfNum(*num2) == 0){
+            printf("ERROR\n");
+            exit(98);
+        }
         mult_cpt += 1;
     }
     print_string(result);
@@ -102,5 +116,11 @@ void print_string(char *str){
         str = str + 1;
     }
     _putchar('\n');
+}
+
+int checkIfNum(char chr){
+    if (chr < 48 || chr > 57)
+        return (0);
+    return (1);
 }
 
