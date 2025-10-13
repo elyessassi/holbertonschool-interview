@@ -9,20 +9,23 @@
 
 int main(int argc, char *argv[])
 {
-	char *result, *start, *end, *num1 = argv[1], *num2 = argv[2];
-	int res_len, size1 = mystrlen(num1), size2 = mystrlen(num2);
+	char *result, *start, *end, *num1, *num2;
+	int res_len, size1, size2;
 
 	if (argc != 3)
 		exitFunc();
+	num1 = argv[1];
+	num2 = argv[2];
 	if (*num1 == '0' || *num2 == '0'){
 		printf("0");
 		exit(0);
 	}
-
 	if (checkIfNum(*num2) == 0)
 		exitFunc();
 	if (checkIfNum(*num1) == 0)
 		exitFunc();
+	size1 = mystrlen(num1);
+	size2 = mystrlen(num2);
 	if (((*num1 - '0') * (*num2 - '0')) >= 10) /**array with size of the result*/
 	{
 		res_len = (size1 + size2);
