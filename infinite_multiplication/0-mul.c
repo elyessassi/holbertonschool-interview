@@ -10,11 +10,16 @@
 int main(int argc, char *argv[])
 {
 	char *result, *start, *end, *num1 = argv[1], *num2 = argv[2];
-	int i, j, mult_cpt = 1, res_len, size1 = mystrlen(num1), size2 = mystrlen(num2), product;
+	int i, j, res_len, size1 = mystrlen(num1), size2 = mystrlen(num2), product;
 
-	argc != 3 ? exitFunc() : 0; /**  mult is 1 then 10 then 100 ... */
-	checkIfNum(*num2) == 0 ? exitFunc() : 0;
-	checkIfNum(*num1) == 0 ? exitFunc() : 0;
+	 /**  mult is 1 then 10 then 100 ... */
+
+	if (checkIfNum(*num2) == 0){
+		exitFunc();
+	}
+	if (checkIfNum(*num1) == 0){
+		exitFunc();
+	}
 	if (((*num1 - '0') * (*num2 - '0')) >= 10) /**  creating array with the size of the product */
 	{
 		res_len = (size1 + size2);
@@ -27,7 +32,9 @@ int main(int argc, char *argv[])
 	}
 	start = result;
 	num2 = num2 + size2 - 1;
-	checkIfNum(*num2) == 0 ? exitFunc() : 0;
+	if (checkIfNum(*num2) == 0){
+		exitFunc();
+	}
 	zerosArray(&result, res_len); /** going to the last index and replacing result with zeros */
 	end = result + res_len;		/** this points to the last digit (right) of result */
 	result = getMul(num1, num2, size1, size2, result, start, end);
