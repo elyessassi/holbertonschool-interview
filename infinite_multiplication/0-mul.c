@@ -10,7 +10,7 @@
 int main(int argc, char *argv[])
 {
 	char *result, *start, *end, *num1 = argv[1], *num2 = argv[2];
-	int i, j, res_len, size1 = mystrlen(num1), size2 = mystrlen(num2), product;
+	int res_len, size1 = mystrlen(num1), size2 = mystrlen(num2);
 
 	 /**  mult is 1 then 10 then 100 ... */
 	if (argc != 3)
@@ -135,7 +135,9 @@ char *getMul(char *n1, char *n2, int s1, int s2, char *res, char *s, char *e)
 	for (i = 0; i < s2; i++) /**  main logic */
 	{
 		n1 = n1 + s1 - 1;
-		checkIfNum(*n1) == 0 ? exitFunc() : 0;
+		if (checkIfNum(*n1) == 0){
+			exitFunc();
+		}
 		res = e - mult_cpt;
 		for (j = 0; j < s1; j++)
 		{
@@ -164,7 +166,9 @@ char *getMul(char *n1, char *n2, int s1, int s2, char *res, char *s, char *e)
 				*(res - 1) = (*(res - 1) - '0') + (second_digit - '0') + '0';
 				res = res - 1;
 			}
-			j < s1 - 1 ? n1 = n1 - 1 : 0;
+			if (j < s1 - 1){
+				n1 = n1 - 1;
+			} 
 		}
 		checkIfNum(*n2) == 0 ? exitFunc() : 0;
 		n2 = n2 - 1;
