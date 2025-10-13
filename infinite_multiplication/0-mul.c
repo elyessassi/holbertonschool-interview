@@ -15,8 +15,9 @@ int main(int argc, char *argv[]){
     }
     num1 = argv[1];
     num2 = argv[2];
-    if (*num2 == '0' || *num1 == 0){
+    if (*num2 == '0' || *num1 == '0'){
         printf("0\n");
+        exit('0');
     }
     
 
