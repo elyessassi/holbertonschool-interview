@@ -138,7 +138,7 @@ void zerosArray(char **array, int len)
 
 char *getMul(char *n1, char *n2, int s1, int s2, char *res, char *s, char *e)
 {
-	int i, j, first_digit, second_digit, digit1, digit2, product, mult_cpt = 1;
+	int i, j, first_digit, second_digit, product, mult_cpt = 1;
 
 	for (i = 0; i < s2; i++) /**  main logic */
 	{
