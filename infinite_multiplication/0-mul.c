@@ -16,7 +16,8 @@ int main(int argc, char *argv[])
 		exitFunc();
 	num1 = argv[1];
 	num2 = argv[2];
-	if (*num1 == '0' || *num2 == '0'){
+	if (*num1 == '0' || *num2 == '0')
+	{
 		printf("0\n");
 		exit(0);
 	}
@@ -142,9 +143,8 @@ char *getMul(char *n1, char *n2, int s1, int s2, char *res, char *s, char *e)
 	for (i = 0; i < s2; i++) /**  main logic */
 	{
 		n1 = n1 + s1 - 1;
-		if (checkIfNum(*n1) == 0){
+		if (checkIfNum(*n1) == 0)
 			exitFunc();
-		}
 		res = e - mult_cpt;
 		for (j = 0; j < s1; j++)
 		{
@@ -160,12 +160,7 @@ char *getMul(char *n1, char *n2, int s1, int s2, char *res, char *s, char *e)
 				second_digit = '0';
 			}
 			if (((*res - '0') + (first_digit - '0')) >= 10)
-			{
-				digit1 = (((*res - '0') + (first_digit - '0')) % 10) + '0';
-				digit2 = (((*res - '0') + (first_digit - '0')) / 10) + '0';
-				*res = digit1;
-				*(res - 1) = (*(res - 1) - '0') + (digit2 - '0') + '0';
-			}
+				addTwoDigitNum(&res, first_digit);
 			else
 				*res = (*res - '0') + (first_digit - '0') + '0';
 			if (res != s)
@@ -173,9 +168,8 @@ char *getMul(char *n1, char *n2, int s1, int s2, char *res, char *s, char *e)
 				*(res - 1) = (*(res - 1) - '0') + (second_digit - '0') + '0';
 				res = res - 1;
 			}
-			if (j < s1 - 1){
+			if (j < s1 - 1)
 				n1 = n1 - 1;
-			} 
 		}
 		if (checkIfNum(*n2) == 0)
 			exitFunc();
@@ -183,4 +177,20 @@ char *getMul(char *n1, char *n2, int s1, int s2, char *res, char *s, char *e)
 		mult_cpt += 1;
 	}
 	return (res);
+}
+
+/**
+ * addTwoDigitNum - adding a two digit number to the array
+ * @array: array to add elem to
+ * @number: number to add
+ */
+
+void addTwoDigitNum(char **array, int number)
+{
+	int digit1, digit2;
+
+	digit1 = (((**array - '0') + (number - '0')) % 10) + '0';
+	digit2 = (((**array - '0') + (number - '0')) / 10) + '0';
+	**array = digit1;
+	*(*(array - 1)) = *(*(array - 1) - '0') + (digit2 - '0') + '0';
 }
