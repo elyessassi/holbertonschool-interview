@@ -10,14 +10,14 @@ int main(int argc, char *argv[]){
     char *temp;
     // mult is 1 then 10 then 100 ...
     if (argc != 3){
-        printf("ERROR\n");
+        printf("Error\n");
         exit(98);
     }
     num1 = argv[1];
     num2 = argv[2];
 
     if (checkIfNum(*num1) == 0 || checkIfNum(*num2) == 0){
-        printf("ERROR\n");
+        printf("Error\n");
         exit(98);
     }
         
@@ -40,9 +40,10 @@ int main(int argc, char *argv[]){
     start = result;
     num2 = num2 + size2 - 1;
     if (checkIfNum(*num2) == 0){
-        printf("ERROR\n");
+        printf("Error\n");
         exit(98);
     }
+    
     // going to the last index and replacing result with zeros
     temp = result;
     for (i = 0; i < res_len; i++){
@@ -56,7 +57,7 @@ int main(int argc, char *argv[]){
     for (i = 0; i < size2; i++){
         num1 = num1 + size1 - 1;
         if (checkIfNum(*num1) == 0){
-            printf("ERROR\n");
+            printf("Error\n");
             exit(98);
         }
         result = end - mult_cpt;
@@ -88,11 +89,12 @@ int main(int argc, char *argv[]){
                 num1 = num1 - 1;
         }
 
-        num2 = num2 - 1;
         if (checkIfNum(*num2) == 0){
-            printf("ERROR\n");
+            printf("Error\n");
             exit(98);
         }
+        num2 = num2 - 1;
+        
         mult_cpt += 1;
     }
     print_string(result);
