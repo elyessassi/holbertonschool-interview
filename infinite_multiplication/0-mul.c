@@ -17,7 +17,7 @@ int main(int argc, char *argv[]){
     num2 = argv[2];
     if (*num2 == '0' || *num1 == '0'){
         printf("0\n");
-        exit('0');
+        exit(0);
     }
     
 
