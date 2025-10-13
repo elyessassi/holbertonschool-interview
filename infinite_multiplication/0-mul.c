@@ -13,14 +13,13 @@ int main(int argc, char *argv[])
 	int i, j, res_len, size1 = mystrlen(num1), size2 = mystrlen(num2), product;
 
 	 /**  mult is 1 then 10 then 100 ... */
-
-	if (checkIfNum(*num2) == 0){
+	if (argc != 3)
 		exitFunc();
-	}
-	if (checkIfNum(*num1) == 0){
+	if (checkIfNum(*num2) == 0)
 		exitFunc();
-	}
-	if (((*num1 - '0') * (*num2 - '0')) >= 10) /**  creating array with the size of the product */
+	if (checkIfNum(*num1) == 0)
+		exitFunc();
+	if (((*num1 - '0') * (*num2 - '0')) >= 10) /**array with size of the result*/
 	{
 		res_len = (size1 + size2);
 		result = malloc(sizeof(char) * res_len + 1);
@@ -32,11 +31,10 @@ int main(int argc, char *argv[])
 	}
 	start = result;
 	num2 = num2 + size2 - 1;
-	if (checkIfNum(*num2) == 0){
+	if (checkIfNum(*num2) == 0)
 		exitFunc();
-	}
-	zerosArray(&result, res_len); /** going to the last index and replacing result with zeros */
-	end = result + res_len;		/** this points to the last digit (right) of result */
+	zerosArray(&result, res_len);
+	end = result + res_len;		/** points to the last digit result */
 	result = getMul(num1, num2, size1, size2, result, start, end);
 	print_string(result);
 	free(result);
@@ -104,7 +102,8 @@ void exitFunc(void)
  * @len: length of the array
  */
 
-void zerosArray(char **array, int len){
+void zerosArray(char **array, int len)
+{
 	char *temp;
 	int i;
 
@@ -129,7 +128,7 @@ void zerosArray(char **array, int len){
  * variables consist of one letter to make the line shorter
  */
 
-char *getMul(char *n1, char* n2, int s1, int s2, char* res, char* s, char*e)
+char *getMul(char *n1, char *n2, int s1, int s2, char *res, char *s, char *e)
 {
 	int i, j, first_digit, second_digit, digit1, digit2, product, mult_cpt = 1;
 
@@ -158,9 +157,8 @@ char *getMul(char *n1, char* n2, int s1, int s2, char* res, char* s, char*e)
 				*res = digit1;
 				*(res - 1) = (*(res - 1) - '0') + (digit2 - '0') + '0';
 			}
-			else{
+			else
 				*res = (*res - '0') + (first_digit - '0') + '0';
-			}
 			if (res != s)
 			{
 				*(res - 1) = (*(res - 1) - '0') + (second_digit - '0') + '0';
@@ -172,5 +170,5 @@ char *getMul(char *n1, char* n2, int s1, int s2, char* res, char* s, char*e)
 		n2 = n2 - 1;
 		mult_cpt += 1;
 	}
-	return(res);
+	return (res);
 }
