@@ -1,17 +1,20 @@
 #include "holberton.h"
 
+/**
+ * main - main function
+ * @argc: number of arguments
+ * @argv: array that consists of the arguments
+ * Return: 1 for success 0 for failure
+ */
+
 int main(int argc, char *argv[])
 {
-	char *result, *start, *end, *num1, *num2, first_digit, second_digit, digit1, digit2, *temp;
-	int i, j, mult_cpt = 1, res_len, size1, size2, product;
-	if (argc != 3) /**  mult is 1 then 10 then 100 ... */
-		exitFunc();
-	num1 = argv[1];
-	num2 = argv[2];
-	checkIfNum(*num2) == 0 ? exitFunc() : NULL;
-	checkIfNum(*num1) == 0 ? exitFunc() : NULL;
-	size1 = mystrlen(num1);
-	size2 = mystrlen(num2);
+	char *result, *start, *end, *num1 = argv[1], *num2 = argv[2];
+	int i, j, mult_cpt = 1, res_len, size1 = mystrlen(num1), size2 = mystrlen(num2), product;
+
+	argc != 3 ? exitFunc() : 0; /**  mult is 1 then 10 then 100 ... */
+	checkIfNum(*num2) == 0 ? exitFunc() : 0;
+	checkIfNum(*num1) == 0 ? exitFunc() : 0;
 	if (((*num1 - '0') * (*num2 - '0')) >= 10) /**  creating array with the size of the product */
 	{
 		res_len = (size1 + size2);
@@ -24,58 +27,19 @@ int main(int argc, char *argv[])
 	}
 	start = result;
 	num2 = num2 + size2 - 1;
-	checkIfNum(*num2) == 0 ? exitFunc() : NULL;
-	temp = result; /** going to the last index and replacing result with zeros */
-	for (i = 0; i < res_len; i++)
-	{
-		*temp = '0';
-		temp = temp + 1;
-	}
-	*temp = '\0';
+	checkIfNum(*num2) == 0 ? exitFunc() : 0;
+	zerosArray(&result, res_len); /** going to the last index and replacing result with zeros */
 	end = result + res_len;		/** this points to the last digit (right) of result */
-	for (i = 0; i < size2; i++) /**  main logic */
-	{
-		num1 = num1 + size1 - 1;
-		checkIfNum(*num1) == 0 ? exitFunc() : NULL;
-		result = end - mult_cpt;
-		for (j = 0; j < size1; j++)
-		{
-			product = (*num1 - '0') * (*num2 - '0');
-			if (product > 9)
-			{
-				first_digit = (product % 10) + '0';
-				second_digit = (product / 10) + '0';
-			}
-			else
-			{
-				first_digit = product + '0';
-				second_digit = '0';
-			}
-			if (((*result - '0') + (first_digit - '0')) >= 10)
-			{
-				digit1 = (((*result - '0') + (first_digit - '0')) % 10) + '0';
-				digit2 = (((*result - '0') + (first_digit - '0')) / 10) + '0';
-				*result = digit1;
-				*(result - 1) = (*(result - 1) - '0') + (digit2 - '0') + '0';
-			}
-			else
-				*result = (*result - '0') + (first_digit - '0') + '0';
-
-			if (result != start)
-			{
-				*(result - 1) = (*(result - 1) - '0') + (second_digit - '0') + '0';
-				result = result - 1;
-			}
-			if (j < size1 - 1)
-				num1 = num1 - 1;
-		}
-		checkIfNum(*num2) == 0 ? exitFunc() : NULL;
-		num2 = num2 - 1;
-		mult_cpt += 1;
-	}
+	result = getMul(num1, num2, size1, size2, result, start, end);
 	print_string(result);
 	free(result);
 }
+
+/**
+ * mystrlen - function that gets the length of a string
+ * @mystring: string to get its length
+ * Return: the length
+ */
 
 int mystrlen(char *mystring)
 {
@@ -89,6 +53,11 @@ int mystrlen(char *mystring)
 	return (length);
 }
 
+/**
+ * print_string - prints given array
+ * @str: array to print
+ */
+
 void print_string(char *str)
 {
 	while (*str != '\0')
@@ -99,6 +68,12 @@ void print_string(char *str)
 	_putchar('\n');
 }
 
+/**
+ * checkIfNum - checks if a character represents a number
+ * @chr: the character to check
+ * Return: 1 if it is a number 0 if not
+ */
+
 int checkIfNum(char chr)
 {
 	if (chr < 48 || chr > 57)
@@ -106,8 +81,89 @@ int checkIfNum(char chr)
 	return (1);
 }
 
+/**
+ * exitFunc - function that is called in case of an error
+ */
+
 void exitFunc(void)
 {
 	printf("Error\n");
 	exit(98);
+}
+
+/**
+ * zerosArray - fills the array with zeros
+ * @array: the array to modify
+ * @len: length of the array
+ */
+
+void zerosArray(char **array, int len){
+	char *temp;
+	int i;
+
+	temp = *array;
+	for (i = 0; i < len; i++)
+	{
+		*temp = '0';
+		temp = temp + 1;
+	}
+}
+
+/**
+ * getMul - gives the result of the multiplication in form of an array
+ * @n1: argument 1
+ * @n2: argument 2
+ * @s1: size of arg1
+ * @s2: size of arg2
+ * @res: the array to fill
+ * @s: the start of the array
+ * @e: the end of the array
+ * Return: the array
+ * variables consist of one letter to make the line shorter
+ */
+
+char *getMul(char *n1, char* n2, int s1, int s2, char* res, char* s, char*e)
+{
+	int i, j, first_digit, second_digit, digit1, digit2, product, mult_cpt = 1;
+
+	for (i = 0; i < s2; i++) /**  main logic */
+	{
+		n1 = n1 + s1 - 1;
+		checkIfNum(*n1) == 0 ? exitFunc() : 0;
+		res = e - mult_cpt;
+		for (j = 0; j < s1; j++)
+		{
+			product = (*n1 - '0') * (*n2 - '0');
+			if (product > 9)
+			{
+				first_digit = (product % 10) + '0';
+				second_digit = (product / 10) + '0';
+			}
+			else
+			{
+				first_digit = product + '0';
+				second_digit = '0';
+			}
+			if (((*res - '0') + (first_digit - '0')) >= 10)
+			{
+				digit1 = (((*res - '0') + (first_digit - '0')) % 10) + '0';
+				digit2 = (((*res - '0') + (first_digit - '0')) / 10) + '0';
+				*res = digit1;
+				*(res - 1) = (*(res - 1) - '0') + (digit2 - '0') + '0';
+			}
+			else{
+				*res = (*res - '0') + (first_digit - '0') + '0';
+			}
+			if (res != s)
+			{
+				*(res - 1) = (*(res - 1) - '0') + (second_digit - '0') + '0';
+				res = res - 1;
+			}
+			j < s1 - 1 ? n1 = n1 - 1 : 0;
+		}
+		checkIfNum(*n2) == 0 ? exitFunc() : 0;
+		n2 = n2 - 1;
+		mult_cpt += 1;
+	}
+	return(res);
 }
