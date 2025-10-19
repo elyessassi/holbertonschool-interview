@@ -1,8 +1,12 @@
 #!/usr/bin/python3
+""" Island Parameter algorithm """
+
 
 def island_perimeter(grid):
+    """ Main function """
+
     perimeter = 0
-    
+
     for i in range(len(grid)):
         for j in range(len(grid[i])):
             if (grid[i][j] == 1):
@@ -23,4 +27,4 @@ def island_perimeter(grid):
                 elif (grid[i][j + 1] == 0):
                     perimeter = perimeter + 1
 
-    return(perimeter)
+    return (perimeter)
